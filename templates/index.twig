@@ -1,0 +1,5 @@
+{% extends '_layout' %}
+{% set entries = craft.entries()
+    .section('blogposts')
+    .all() %}
+{% set content = serialize(entries, 'blogpost', 'overview') %}

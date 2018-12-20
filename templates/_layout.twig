@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimal-ui" />
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        {% block head %}
+            <title>Default</title>
+        {% endblock %}
+        {% if getenv('ENVIRONMENT') != "dev" %}
+            <link rel="stylesheet" href="/assets/style.css" media="screen" />
+        {% endif %}
+    </head>
+    <body>
+        {% block body %}
+        {% set store = {content: content} %}
+        {% set location =  '/' ~ craft.app.request.getPathInfo(true)  %}
+            {{ redux_store('appStore', store ) }} 
+            {{ react_component('App',{'props':{location: location }})}}
+        {% endblock %}
+        {% if getenv('ENVIRONMENT') == "dev" %}
+            <script src="http://localhost:8080/assets/bundle.js"></script>
+        {% else %}
+            <script src="/dist/bundle.js"></script>
+        {% endif %}
+    </body>
+</html>
