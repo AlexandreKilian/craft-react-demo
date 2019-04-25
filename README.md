@@ -2,7 +2,7 @@
 
 ## Setup
 
-1. Install Craft (`composer install`, `./craft install`)
+1. Install Craft (`composer install`, `./craft setup`)
 2. Install all plugins
 3. Install all migrations from the migration manager
 4. Install node modules (`yarn` or `npm i`)
